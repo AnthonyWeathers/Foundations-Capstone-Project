@@ -8,21 +8,49 @@ let numOfFortunes = 3
 let userID = 0 // maybe could have loggedUser in the frontend
 let registered = 1
 
-const fortunes = [`You're gonna go far`, `You got this`, `Tomorrow is another day`]
+// const fortunes = [`You're gonna go far`, `You got this`, `Tomorrow is another day`]
 
 module.exports = {
     getFortunes: (req, res) => {
-        let fortune = []
+        let fortunes = [] // holds the fortunes
+        let fortuneIDs = [] // tracks the fortuneID already grabbed to prevent doubles
         let i = 0
         while(i < numOfFortunes) {
-            let randomFortunes = Math.floor(Math.random() * 3)
-            if(!fortune.includes(fortunes[randomFortunes])) {
-                gotFortune[randomFortunes] = fortunes[randomFortunes] // should update collection with correct spot related to fortune to display it if it was gotten
-                fortune.push(fortunes[randomFortunes])
-                i++
+            let randomFortuneID = Math.floor(Math.random() * 3) + 1// as id will likely start at 1, not 0
+            if(!fortuneIDs.includes(randomFortuneID)) { // change this and below with sequelize queries to select the fortune based off id 
+                sequelize.query(`
+                SELECT * FROM fortunes
+                WHERE fortune_id = ${randomFortuneID}
+                `).then(fortune => {
+                fortunes.push(fortune);
+                sequelize.query(`
+                    SELECT * FROM user_fortunes
+                    WHERE user_id = ${userID} AND fortune_id = ${randomFortuneID}
+                    `).then(existingAssociations => {
+                    if (existingAssociations.length === 0) {
+                        sequelize.query(`
+                            INSERT INTO user_fortunes (user_id, fortune_id)
+                            VALUES (${userID}, ${randomFortuneID})
+                            `).then(() => {
+                            console.log('Added new unique obtained fortune to user');
+                            }).catch(error => {
+                            console.error('Error inserting user_fortunes:', error);
+                            });
+                    } else {
+                        console.log('Fortune already obtained by user');
+                    }
+                    }).catch(error => {
+                    console.error('Error selecting existing associations:', error);
+                    });
+                }).catch(error => {
+                console.error('Error selecting fortune:', error);
+                });
+
+            fortuneIDs.push(randomFortuneID);
+            i++;
             }
         }
-        res.status(200).send(fortune)
+        res.status(200).send(fortunes)
     },
     login: (req, res) => {
         const {username, password} = req.body
@@ -76,12 +104,20 @@ module.exports = {
     },
     getList: (req, res) => {
         sequelize.query(`
-            SELECT fortunes.fortune 
+            SELECT fortunes.fortune, fortunes.fortune_id
             FROM users
             JOIN user-fortunes ON users.user_id = user-fortunes.user_id
             JOIN fortunes ON user-fortunes.fortune_id = fortunes.fortune_id
             WHERE users.user_id = ${userID};
-        `)
+        `).then(results => {
+            const fortunes = results[0]; // Extract the fortunes and their id from the array
+    
+            // Send the fortunes array as the response
+            res.status(200).send(fortunes)
+            }).catch(error => {
+            console.error('Error fetching fortunes:', error)
+            res.status(500).send('Internal Server Error')
+            })
     },
     getUser: (req, res) => { // should get username and user_id with the id currently in userID to show the username and id of the user currently logged in
         sequelize.query(`
@@ -93,5 +129,9 @@ module.exports = {
             console.log(err);
             res.status(500).send('Internal server error')
         })
+    },
+    signOut: (req, res) => {
+        userID = 0
+        res.status(200).send('User signed out')
     }
 }

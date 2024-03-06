@@ -7,8 +7,9 @@ const sequelize = require('./database.js')
 
 sequelize.sync()
 
+const {SERVER_PORT} = process.env
 const seed = require('./seed.js')
-const {register, login, getFortunes, updateNumber} = require('./controller.js')
+const {register, login, getFortunes, updateNumber, getList, signOut} = require('./controller.js')
 
 app.use(express.json())
 app.use(cors())
@@ -23,4 +24,8 @@ app.put('/fortunes', updateNumber) // change number of Fortunes to be displayed
 
 app.get('/fortunes', getFortunes) //get fortunes
 
-app.get('/getList', getList)
+app.get('/getList', getList) // should get a table that the user 
+
+app.get('/signout', signOut) // signs user out and returns to login page
+
+app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
