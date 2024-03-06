@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <a href="#">Sign out</a> <br>
+
+    <form id="fortune-form">
+        <label for="number">Enter number of fortunes you'd like to receive in a set(1 - 3):</label>
+        <input type="text" id="number">
+        <button>update</button>
+    </form>
+
+    <button id="get-fortunes">Get Fortunes</button>
+
+    <section id="fortune-list">
+        <p id="fortune1"></p>
+        <p id="fortune2"></p>
+        <p id="fortune3"></p>
+    </section> <br>
+    <!-- Maybe put this in another html page separate like in the webevent click collection to go to that page to view collection -->
+    <!-- <button id="toggleDataBtn">Show/Hide Data</button>
+    <div id="dataContainer"> -->
+        <!-- Data will be filled here -->
+    <!-- </div> -->
+
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
+    
+</body>
+</html>

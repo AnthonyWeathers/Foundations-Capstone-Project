@@ -60,8 +60,9 @@ module.exports = {
             WHERE username = '${username}' and password = '${password}'
         `).then(dbRes => {
             if(dbRes[0].length > 0) {
-                userID = dbRes[0].user_id // should assign id of user that's logging in
-                res.status(200).send(dbRes[0])
+                const user = dbRes[0][0]
+                userID = user.user_id // should assign id of user that's logging in
+                res.status(200).send(`Welcome back, ${user.username}`)
             } else {
                 res.status(404).send("User not found")
             }
