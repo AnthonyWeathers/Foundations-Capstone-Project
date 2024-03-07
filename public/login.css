@@ -1,0 +1,32 @@
+h2{
+    display: flex;
+    justify-content: center;
+    height: 25vh;
+}
+
+#login-form{
+    display: block;
+    height: 5vh;
+}
+
+#register{
+    display: flex;
+    justify-content: center;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    font-size: x-large;
+}
+
+p{
+    display: none;
+}
+
+#next {
+    display: none;
+}

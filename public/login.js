@@ -8,6 +8,7 @@ const login = body => axios.post(`http://localhost:8765/login`, body)
         console.log(data)
 
         document.querySelector('p').textContent = data
+        toggle()
         alert('Login Successful')
 
         // document.getElementById('next').classList.toggle('hidden')
@@ -33,5 +34,11 @@ const loginFormHandler = (e) => {
 
 }
 
+const toggle = () => {
+    document.getElementById("login-form").style.display = "none" // Hide register-form after submitting
+    document.querySelector('p').style.display = "block"
+    document.querySelector('#next').style.display = "block"
+    document.querySelector('#register').style.display = "none"
+}
 
 loginForm.addEventListener('submit', loginFormHandler)
