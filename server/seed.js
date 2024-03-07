@@ -24,7 +24,7 @@ const seed = () => {
     );
 
     insert into fortunes (fortune) 
-    values ('You are gonna go far'), ('You got this'), ('Tomorrow is another day');
+    values ('You are gonna go far'), ('You got this'), ('Tomorrow is another day'), ('Believe you can and you’re halfway there'), ('Don’t count the days, make the days count'), ('If you’re having fun, that’s when the best memories are built'), ('You just gotta keep going and fighting for everything, and one day you’ll get to where you want'), ('It is often the small steps, not the giant leaps, that bring about the most lasting change'), ('There is always light. If only we’re brave enough to see it. If only we’re brave enough to be it');
     `).then(() => {
         console.log('DB seeded!')
     }).catch(err => console.log('error seeding DB', err))

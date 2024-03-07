@@ -6,7 +6,6 @@ const sequelize = require('./database')
 
 let numOfFortunes = 3
 let userID = 0 // maybe could have loggedUser in the frontend
-let registered = 1
 
 // const fortunes = [`You're gonna go far`, `You got this`, `Tomorrow is another day`]
 
@@ -18,7 +17,7 @@ module.exports = {
             let i = 0;
             console.log(numOfFortunes)
             while(i < numOfFortunes) {
-                let randomFortuneID = Math.floor(Math.random() * 3) + 1; // As id will likely start at 1, not 0
+                let randomFortuneID = Math.floor(Math.random() * 9) + 1; // As id will likely start at 1, not 0
                 if(!fortuneIDs.includes(randomFortuneID)) {
                     // Fetch fortune
                     const [fortune] = await sequelize.query(`
@@ -78,8 +77,6 @@ module.exports = {
             INSERT INTO users (username, password)
             VALUES('${username}', '${password}')
         `).then(dbRes => {
-            userID = registered // should make userID equal to what should be the id assigned to newest user
-            registered++ // increments registered so it'll be the id value of new user
             res.status(200).send(`Welcome aboard, ${username}`)
         }).catch(err => {
             if(err.original && err.original.code === 'ER_DUP_ENTRY') {

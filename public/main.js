@@ -73,6 +73,17 @@ const signOut = evt => {
     })
 }
 
+const getUser = () => {
+    axios.get(`http://localhost:8765/user`)
+    .then(res => {
+        console.log(res.data[0].username)
+        document.getElementById('logged-username').textContent = `username: ${res.data[0].username}`
+        document.getElementById('logged-userID').textContent = `userID: ${res.data[0].user_id}`
+    })
+}
+
 fortuneForm.addEventListener('submit', fortuneFormHandler)
 getFortuneBtn.addEventListener('click', getFortunesHandler)
 link.addEventListener('click', signOut)
+
+getUser()
