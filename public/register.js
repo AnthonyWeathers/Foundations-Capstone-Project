@@ -7,6 +7,8 @@ const register = body => axios.post('http://localhost:8765/register', body)
         const data = res.data
         console.log(data)
         document.querySelector('p').textContent = data
+        document.querySelector('h2').textContent = "Registered"
+        toggle()
         alert('Registration complete')
     }).catch(err => {
         alert(`Registration failed.`)
@@ -36,6 +38,12 @@ const registerFormHandler = (evt) => {
         register(bodyObj)
     }
 
+}
+
+const toggle = () => {
+        document.getElementById("register-form").style.display = "none" // Hide register-form after submitting
+        document.querySelector('p').style.display = "block"
+        document.querySelector('a').style.display = "block"
 }
 
 registerForm.addEventListener('submit', registerFormHandler)
