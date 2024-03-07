@@ -108,12 +108,13 @@ module.exports = {
     },
     getList: (req, res) => {
         sequelize.query(`
-            SELECT fortunes.fortune, fortunes.fortune_id
+            SELECT fortunes.fortune
             FROM users
-            JOIN user-fortunes ON users.user_id = user-fortunes.user_id
-            JOIN fortunes ON user-fortunes.fortune_id = fortunes.fortune_id
-            WHERE users.user_id = ${userID};
-        `).then(results => {
+            JOIN user_fortunes ON users.user_id = user_fortunes.user_id
+            JOIN fortunes ON user_fortunes.fortune_id = fortunes.fortune_id
+            WHERE users.user_id = ${userID}
+            ORDER BY fortunes.fortune_id ASC; 
+        `).then(results => { // Order by fortune_id ascending;
             const fortunes = results[0]; // Extract the fortunes and their id from the array
     
             // Send the fortunes array as the response
