@@ -11,7 +11,12 @@ const register = body => axios.post('http://localhost:8765/register', body)
         toggle()
         alert('Registration complete')
     }).catch(err => {
-        alert(`Registration failed.`)
+        console.log(err)
+        if(err = 'User already exists') {
+            alert(err)
+        } else {
+            alert(`Registration failed.`)
+        }
     })
 
 const registerFormHandler = (evt) => {

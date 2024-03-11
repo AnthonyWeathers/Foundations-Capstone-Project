@@ -79,7 +79,7 @@ module.exports = {
         `).then(dbRes => {
             res.status(200).send(`Welcome aboard, ${username}`)
         }).catch(err => {
-            if(err.original && err.original.code === 'ER_DUP_ENTRY') {
+            if(err.original.constraint === 'users_username_key') {
                 res.status(400).send('User already exists')
             } else {
                 res.status(500).send('Internal server error')
