@@ -82,7 +82,6 @@ module.exports = {
             if(err.original && err.original.code === 'ER_DUP_ENTRY') {
                 res.status(400).send('User already exists')
             } else {
-                console.log(err);
                 res.status(500).send('Internal server error')
             }
         })

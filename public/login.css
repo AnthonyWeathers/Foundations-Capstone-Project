@@ -1,17 +1,38 @@
+body {
+    background-color: #e0e4d1;
+}
+
 h2{
     display: flex;
     justify-content: center;
-    height: 25vh;
+    align-items: center;
+    height: 15vh;
+    color:#50c7f7;
+    background-color: #6A6B83;
+    width: 100%;
 }
 
 #login-form{
     display: block;
-    height: 5vh;
+    padding: 20px;
+    height: 16vh;
+    position: relative;
+    top: 80px;
+    left: 30%;
+    background-color: rgb(167, 167, 167);
+    width: 45%;
+}
+
+input {
+    height: 3vh;
 }
 
 #register{
     display: flex;
     justify-content: center;
+    position: relative;
+    left: 50px;
+    top: 20px;
 }
 
 section{
@@ -21,6 +42,8 @@ section{
     align-items: center;
     height: 10vh;
     font-size: x-large;
+    position: relative;
+    top: 80px;
 }
 
 p{

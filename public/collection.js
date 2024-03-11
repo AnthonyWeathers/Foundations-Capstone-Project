@@ -24,17 +24,17 @@ const fetchData = () => {
         });
 }
 
-const toggleData = () => {
-    if (!dataShown) {
-        fetchData(); // Fetch data if not already fetched
-        document.getElementById("dataContainer").style.display = "block"; // Show data container
-        dataShown = true;
-    } else {
-        document.getElementById("dataContainer").style.display = "none"; // Hide data container
-        dataShown = false;
-    }
-}
-
-document.getElementById("toggleDataBtn").addEventListener("click", () => {
-    toggleData(); // Toggle data visibility
-})
+// const toggleData = () => {
+//     if (!dataShown) {
+//         fetchData(); // Fetch data if not already fetched
+//         document.getElementById("dataContainer").style.display = "block"; // Show data container
+//         dataShown = true;
+//     } else {
+//         document.getElementById("dataContainer").style.display = "none"; // Hide data container
+//         dataShown = false;
+//     }
+// }
+fetchData()
+// document.getElementById("toggleDataBtn").addEventListener("click", () => {
+//     toggleData(); // Toggle data visibility
+// })

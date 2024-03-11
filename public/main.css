@@ -1,26 +1,12 @@
-
-/* #dataContainer {
-    display: none;
+body {
+    background-color: #D7D9CE;
 }
-
-#dataContainer ul {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    list-style-type: none;
-}
-
-#dataContainer li {
-    margin: 5px;
-    padding: 10px;
-    border: 1px solid #ccc;
-} */
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(171,123,84);
+    background-color: #6A6B83;
     height: 10vh;
     padding: 0 20px;
 }
@@ -31,39 +17,52 @@ nav a{
 }
 
 section {
-    border: black 1px solid;
+    /* border: black 1px solid; */
+    padding: 10px;
 }
 
 #logged-user {
     display: flex;
     flex-direction: column;
-    background-color: rgb(168,160,158);
+    /* background-color: rgb(168,160,158); */
     height: 20vh;
 }
 
-form {
+/* form {
     border: rgb(255, 38, 0) 2px solid;
-}
+} */
 
 #fortune-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background-color: rgb(69, 129, 182);
+    /* background-color: rgb(69, 129, 182); */
     font-size: medium;
-    color:whitesmoke;
+    color:rgb(61, 61, 61);
     height: 20vh;
 }
+
 #fortune-form button {
     width: 20%
 }
 
+div {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#get-fortunes {
+    width: 20%;
+}
+
 #fortune-list {
-    background-color: rgb(238,211,152);
+    /* background-color: rgb(238,211,152); */
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
     height: 30vh;
+    background-color: #9294ac;
 }

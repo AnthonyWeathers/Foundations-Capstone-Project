@@ -1,5 +1,8 @@
-#dataContainer {
-    display: none; /* Hide initially */
+/* #dataContainer {
+    display: none; // Hide initially
+} */
+body {
+    background-color: #D7D9CE;
 }
 
 #dataContainer ul {
@@ -14,9 +17,37 @@
     display: flex;
     margin: 5px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #d1b0b0;
     align-items: center;
     justify-content: center;
-    width: 10vw;
+    width: 15%;
     height: 30vh;
+}
+
+section {
+    background-color: #6A6B83;
+    height: 15vh;
+}
+
+section a{
+    margin: 10px;
+    color: #02A9EA;
+}
+
+h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #50c7f7;
+    font-size: x-large;
+}
+
+section {
+    padding: 10px;
+}
+
+a {
+    font-size: larger;
+    color:aqua;
 }

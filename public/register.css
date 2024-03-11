@@ -1,14 +1,26 @@
+body {
+    background-color: #D7D9CE;
+}
+
 #register-form {
-    display: block; /* Hide initially */
-    padding: 30px;
-    /* border: black 1px solid; */
+    display: block; 
+    padding: 40px;
+    position: relative;
+    left: 150px;
+    top: 70px;
+    background-color: rgb(219, 219, 219);
+    border: black 1px solid;
+    width: 68%;
 }
 
 h2{
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: x-large;
-    height: 30vh
+    height: 15vh;
+    color:#50c7f7;
+    background-color: #6A6B83;
 }
 
 section {
