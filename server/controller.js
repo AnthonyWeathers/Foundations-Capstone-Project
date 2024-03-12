@@ -77,7 +77,7 @@ module.exports = {
             INSERT INTO users (username, password)
             VALUES('${username}', '${password}')
         `).then(dbRes => {
-            res.status(200).send(`Welcome aboard, ${username}`)
+            res.status(200).send(`New user ${username} registered`)
         }).catch(err => {
             if(err.original.constraint === 'users_username_key') {
                 res.status(400).send('User already exists')
