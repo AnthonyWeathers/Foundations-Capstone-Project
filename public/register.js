@@ -1,7 +1,5 @@
 const registerForm = document.querySelector('#register-form')
 
-// done, just add a redirect to login or main page later
-
 const register = body => axios.post('http://localhost:8765/register', body)
     .then(res => {
         const data = res.data
@@ -25,7 +23,6 @@ const registerFormHandler = (evt) => {
     let username = document.querySelector('#reg_username')
     let password = document.querySelector('#reg_password')
     let passwordCheck = document.querySelector('#repeat_password')
-    //console.log(updateNumber.value)
     if(username.length === 0) {
         alert('Username can not be empty')
     } else if(password.length === 0) {
@@ -38,8 +35,6 @@ const registerFormHandler = (evt) => {
             password: password.value
         }
         console.log(bodyObj)
-        //loginForm.classList.add('hidden')
-        //console.log(bodyObj.updateNumber)
         register(bodyObj)
     }
 

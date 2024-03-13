@@ -29,5 +29,4 @@ const seed = () => {
         console.log('DB seeded!')
     }).catch(err => console.log('error seeding DB', err))
 }
-//const fortunes = [`You're gonna go far`, `You got this`, `Tomorrow is another day`]
 module.exports = seed

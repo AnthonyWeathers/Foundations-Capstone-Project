@@ -2,8 +2,6 @@ const fortuneForm = document.querySelector('#fortune-form')
 const getFortuneBtn = document.querySelector('#get-fortunes')
 const link = document.querySelector('a')
 
-// let dataShown = false
-
 const updateFortuneSet = body => axios.put(`http://localhost:8765/fortunes`, body)
     .then(res => {
         alert(res.data)
@@ -13,12 +11,10 @@ const fortuneFormHandler = (e) => {
     e.preventDefault()
 
     let updateNumber = document.querySelector('#number')
-    //console.log(updateNumber.value)
 
     let bodyObj = {
         updateNumber: updateNumber.value
     }
-    //console.log(bodyObj.updateNumber)
     updateFortuneSet(bodyObj)
 
     updateNumber.value = ''
@@ -28,7 +24,6 @@ const getFortunesHandler = () => {
     axios.get(`http://localhost:8765/fortunes`)
     .then(res => {
         const data = res.data;
-        // alert(res.data)
 
         if(data.length === 2) {
             twoFortunes([data[0][0].fortune, data[1][0].fortune])
@@ -51,6 +46,8 @@ const twoFortunes = fortunes => {
     p1.textContent = fortunes[0]
     const p2 = document.getElementById('fortune2')
     p2.textContent = fortunes[1]
+    const p3 = document.getElementById('fortune3')
+    p3.textContent = ''
     return
 }
 

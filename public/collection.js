@@ -2,9 +2,7 @@ let dataShown = false
 
 const fetchData = () => {
     axios.get(`http://localhost:8765/getList`)
-        .then(res => { // works but does not show blank spots for missing fortunes
-            // Assuming data is an array of items
-            //console.log(res.data[0])
+        .then(res => {
             let listItems = res.data.map(function(item) { 
                 return "<li>" + item.fortune + "</li>"; // item is each fortune object containing the fortune
             }).join(""); // Join array elements into a string
@@ -24,17 +22,4 @@ const fetchData = () => {
         });
 }
 
-// const toggleData = () => {
-//     if (!dataShown) {
-//         fetchData(); // Fetch data if not already fetched
-//         document.getElementById("dataContainer").style.display = "block"; // Show data container
-//         dataShown = true;
-//     } else {
-//         document.getElementById("dataContainer").style.display = "none"; // Hide data container
-//         dataShown = false;
-//     }
-// }
 fetchData()
-// document.getElementById("toggleDataBtn").addEventListener("click", () => {
-//     toggleData(); // Toggle data visibility
-// })

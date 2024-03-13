@@ -5,9 +5,7 @@
 const sequelize = require('./database')
 
 let numOfFortunes = 3
-let userID = 0 // maybe could have loggedUser in the frontend
-
-// const fortunes = [`You're gonna go far`, `You got this`, `Tomorrow is another day`]
+let userID = 0
 
 module.exports = {
     getFortunes: async (req, res) => {

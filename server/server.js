@@ -24,7 +24,7 @@ app.put('/fortunes', updateNumber) // change number of Fortunes to be displayed
 
 app.get('/fortunes', getFortunes) //get fortunes
 
-app.get('/getList', getList) // should get a table that the user 
+app.get('/getList', getList) // should get a table of all fortunes obtained by currently logged in user
 
 app.get('/signout', signOut) // signs user out and returns to login page
 
